@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>jQuery.getJSON demo</title>
-    <!--jQuery 3.4.1 for JSON data get-->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
  
     <!--Bootstrap 4.4 CDN-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -19,18 +18,26 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
+    <!--jQuery 3.4.1 for JSON data get-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
 <body>
 
-    <div id="images"></div>
-    <h1 class="display-2" >This is Macau to USD rate</h1>
-    <button type="button" class="btn btn-info">Get data</button>
-    <p class="display-4" id="">THIS IS EXCHANGE RATE</p>
 
+    <div id="images col"></div>
+    <h1 class="display-2" >This is Macau to USD rate</h1>
+    <div class="row">
+        <button type="button" class="btn btn-info col-4" id="get">Get data</button>
+        <p class="display-4 col-8" id="mop-ex">THIS IS EXCHANGE RATE</p>        
+    </div>
+    
     <!--Get Data from Open Exchange Rates-->
     <script>
+        var getButton = document.getElementById("get");
         var mopex = document.getElementById("mop-ex");
+        var mopdata;
 
         (function () {
             var FxAPI = "https://openexchangerates.org/api/latest.json?app_id=3a6c9c06492f48f9afdff18ae5015017";
@@ -39,10 +46,15 @@
                 base: 'USD'
             })
                 .done(function (data) {
-                    console.log("1 USD equals " + data.rates.MOP + " MOP" + "\n " + data.rates.JPY + " JPY");
-                    mopex.innerHTML = data.rates.MOP.toFixed(4);
-                });
+                    mopdata = data.rates.MOP.toFixed(4);
+                    getButton.onclick = function () {
+                       mopex.innerHTML = mopdata;
+                }
+            });
         })();
+
+
+
     </script>
 
 </body>

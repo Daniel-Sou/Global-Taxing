@@ -6,6 +6,7 @@ var taxSUM = document.getElementById("tax");
 var mopEx = document.getElementById("mopex");
 var usdTax = document.getElementById("usd-tax");
 var TaxUsd = document.getElementById("taxusd");
+var addi = document.getElementById("addi");
 
 incomeMOP.addEventListener("input", calculate);
 wealthMOP.addEventListener("input", calculate);
@@ -96,5 +97,6 @@ function calculate() {
     // round with 2 decimal places
     taxSUM.value = Math.round(tax * 100) / 100;
     TaxUsd.value = exchangeUSD(taxSUM,mopEx.value).toFixed(2);
+    addi.value = (usdTax.value - TaxUsd.value).toFixed(2);
 
 }

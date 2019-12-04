@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Global Tax Calculator</title>
     <meta name="codelab" content="your-first-pwa-v3">
     <link rel="manifest" href="/manifest.json">
@@ -140,7 +140,7 @@
     </div>
   </div>
 -->
-        <div class="weather-card"> 
+        <div class="weather-card">
             <button type="button" class="btn btn-default btn-lg active">US Citizen</button>
             <button type="button" class="btn btn-primary btn-lg active">Non-US Citizen</button>
         </div>
@@ -188,26 +188,26 @@
 
         <div class="d-md-flex flex-md-equal w-100 my-md-5 pl-md-5">
 
-            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+            <div class="col-md-6 bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
                 <div class="my-3 py-3">
                     <h2 class="display-6" for="income-mop"> MOP Income </h2> <br>
                     <input type="number" name="income" min="0" id="income-mop" required> <br>
                 </div>
 
                 <div class="my-3 py-3">
-                    <h2 class="display-6" for="income-mop">MOP / USD Exchange Rate >></h2> <br>
+                    <h2 class="display-6" for="income-mop">MOP / USD Exchange Rate</h2> <br>
                     <input type="number" name="mopex" min="1" id="mopex" required> <br>
                 </div>
             </div>
 
-            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+            <div class="col-md-6 bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
                 <div class="my-3 p-3">
                     <h2 class="display-6">USD Income</h2> <br>
-                    <input type="number" name="tax" min="1" id="income-usd" disabled> <br>
+                    <input type="number" name="income-usd" min="1" id="income-usd" disabled> <br>
                 </div>
                 <div class="my-3 p-3">
-                    <h2 class="display-6">TOTAL TAX</h2> <br>
-                    <input type="number" name="tax" min="0" id="tax-1" disabled> <br>
+                    <h2 class="display-6">USD TAX</h2> <br>
+                    <input type="number" name="tax" min="0" id="usd-tax" disabled> <br>
                 </div>
             </div>
         </div>
@@ -227,13 +227,12 @@
                 </div>
         </footer>
 
-        <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Total Tax</a>
-            <input type="number" name="tax" min="0" id="tax" disabled> <br>
+            <!--
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            -->
             <!--
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
@@ -253,7 +252,17 @@
                 </ul>
             </div>
             -->
-        </nav>
+
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+            <div>
+                <a class="text-white" href="#">Total Tax</a>
+                <input type="number" name="tax" min="0" id="tax" disabled>
+            </div>
+            <div>
+                <a class="text-white" href="#">USD Tax</a>
+                <input type="number" name="tax" min="0" id="taxusd" disabled>
+            </div>
+    </nav>
 
     </main>
 

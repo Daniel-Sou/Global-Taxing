@@ -4,6 +4,8 @@ var incomeUSD = document.getElementById("income-usd");
 var wealthMOP = document.getElementById("wealth");
 var taxSUM = document.getElementById("tax");
 var mopEx = document.getElementById("mopex");
+var usdTax = document.getElementById("usd-tax");
+var TaxUsd = document.getElementById("taxusd");
 
 incomeMOP.addEventListener("input", calculate);
 wealthMOP.addEventListener("input", calculate);
@@ -41,7 +43,7 @@ function incomeTaxHKD(TaxableIncomeHKD) {
     } else if (TaxableIncomeHKD <= 100000) {
         return 50000 * 0.02 + (TaxableIncomeHKD - 50000) * 0.06;
     } else if (TaxableIncomeHKD <= 150000) {
-        return 50000 * 0.02 + 50000 * 0.06 + (TaxableIncomeHKD - 100000) * 0.1;
+        return 50000 * 0.02 + 100000 * 0.06 + (TaxableIncomeHKD - 100000) * 0.1;
     } else if (TaxableIncomeHKD <= 200000) {
         return 50000 * 0.02 + 50000 * 0.06 + 50000 * 0.1 + (TaxableIncomeHKD - 150000) * 0.14;
     } else {
@@ -49,9 +51,30 @@ function incomeTaxHKD(TaxableIncomeHKD) {
     }
 }
 
+// function to calculate USD tax - single
+function incomeTaxUSD(usd) {
+    if (usd <= 0) {
+        return 0;
+    } else if (usd <= 9275) {
+        return usd * 0.10;
+    } else if (usd <= 37650) {
+        return 9275 * 0.10 + (usd - 9275) * 0.15;
+    } else if (usd <= 91150) {
+        return 9275 * 0.10 + (37650 - 9275) * 0.15 + (usd - 37650) * 0.25;
+    } else if (usd <= 190150) {
+        return 9275 * 0.10 + (37650 - 9275) * 0.15 + (91150 - 37650) * 0.25 + (usd - 91150) * 0.28;
+    } else if (usd <= 413350) {
+        return 9275 * 0.10 + (37650 - 9275) * 0.15 + (91150 - 37650) * 0.25 + (190150 - 91150) * 0.28 + (usd - 190150) * 0.33;
+    } else if (usd <= 415050) {
+        return 9275 * 0.10 + (37650 - 9275) * 0.15 + (91150 - 37650) * 0.25 + (190150 - 91150) * 0.28 + (413350 - 190150) * 0.33 + (usd - 413350) * 0.35;
+    } else {
+        return 9275 * 0.10 + (37650 - 9275) * 0.15 + (91150 - 37650) * 0.25 + (190150 - 91150) * 0.28 + (413350 - 190150) * 0.33 + (415050 - 413350) * 0.35 + (usd - 415050) * 0.396;
+    } 
+}
+
 // function to calculate USD in household country, exchange
-function exchangeUSD(ex = 1) {
-    var incomeUSD = incomeMOP.value / ex;
+function exchangeUSD(income,ex = 1) {
+    var incomeUSD = income.value / ex;
     return incomeUSD;
 }
 
@@ -63,11 +86,15 @@ function calculate() {
     var hkdTax = incomeTaxHKD(incomeHKD.value);
     var wealthTax;
 
-    incomeUSD.value = exchangeUSD(mopEx.value);
+    incomeUSD.value = exchangeUSD(incomeMOP,mopEx.value);
+
+    usdTax.value = incomeTaxUSD(incomeUSD.value);
 
     var wealthTax = 0.25 * wealthMOP.value;
     var tax = mopTax + wealthTax + hkdTax;
 
     // round with 2 decimal places
     taxSUM.value = Math.round(tax * 100) / 100;
+    TaxUsd.value = exchangeUSD(taxSUM,mopEx.value);
+
 }

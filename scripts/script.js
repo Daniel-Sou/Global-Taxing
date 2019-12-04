@@ -86,15 +86,15 @@ function calculate() {
     var hkdTax = incomeTaxHKD(incomeHKD.value);
     var wealthTax;
 
-    incomeUSD.value = exchangeUSD(incomeMOP,mopEx.value);
+    incomeUSD.value = exchangeUSD(incomeMOP,mopEx.value).toFixed(2);
 
-    usdTax.value = incomeTaxUSD(incomeUSD.value);
+    usdTax.value = incomeTaxUSD(incomeUSD.value).toFixed(2);
 
     var wealthTax = 0.25 * wealthMOP.value;
     var tax = mopTax + wealthTax + hkdTax;
 
     // round with 2 decimal places
     taxSUM.value = Math.round(tax * 100) / 100;
-    TaxUsd.value = exchangeUSD(taxSUM,mopEx.value);
+    TaxUsd.value = exchangeUSD(taxSUM,mopEx.value).toFixed(2);
 
 }

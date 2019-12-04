@@ -186,33 +186,33 @@
   </div>
 -->
 
-        <div class="d-md-flex flex-md-equal w-100 my-md-5 pl-md-5">
+        <div class="d-md-flex flex-md-equal w-100 my-md-5 pl-md-5 input-group">
 
             <div class="col-md-6 bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
                 <div class="my-3 py-3">
                     <h2 class="display-6" for="income-mop"> MOP Income </h2> <br>
-                    <input type="number" name="income" min="0" id="income-mop" required> <br>
+                    <input type="number" class="form-control" name="income" min="0" id="income-mop" required> <br>
                 </div>
 
                 <div class="my-3 py-3">
                     <h2 class="display-6" for="income-mop">MOP / USD Exchange Rate</h2> <br>
-                    <input type="number" name="mopex" min="1" id="mopex" required> <br>
+                    <input type="number" class="form-control" name="mopex" min="1" id="mopex" required> <br>
                 </div>
             </div>
 
             <div class="col-md-6 bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
                 <div class="my-3 p-3">
                     <h2 class="display-6">USD Income</h2> <br>
-                    <input type="number" name="income-usd" min="1" id="income-usd" disabled> <br>
+                    <input type="number" class="form-control"  name="income-usd" min="1" id="income-usd" disabled> <br>
                 </div>
                 <div class="my-3 p-3">
                     <h2 class="display-6">USD TAX</h2> <br>
-                    <input type="number" name="tax" min="0" id="usd-tax" disabled> <br>
+                    <input type="number" class="form-control"  name="tax" min="0" id="usd-tax" disabled> <br>
                 </div>
             </div>
         </div>
 
-        <footer class="container py-5">
+        <footer class="container py-2 container">
             <div class="row">
                 <div class="col-12 col-md">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
@@ -254,14 +254,20 @@
             -->
 
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-            <div>
-                <a class="text-white" href="#">Total Tax</a>
+        <div class="row">
+            <div class="col">
+                <h6 class="text-white" href="#">Total Tax</h6>
                 <input type="number" name="tax" min="0" id="tax" disabled>
             </div>
-            <div>
-                <a class="text-white" href="#">USD Tax</a>
+            <div class="col">
+                <h6 class="text-white" href="#">USD Tax</h6>
                 <input type="number" name="tax" min="0" id="taxusd" disabled>
             </div>
+            <div class="col">
+                <h6 class="text-white" href="#">Additional Tax</h6>
+                <input type="number" name="tax" min="0" id="addi" disabled>
+            </div>
+        </div>
     </nav>
 
     </main>

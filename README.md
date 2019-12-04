@@ -10,6 +10,9 @@ To do the web app, first to confirm what element will be included.
 
 change the file
 
-
 Daniel
 4 DEC
+
+## Referecne
+The API Data reference
+https://openexchangerates.org/account

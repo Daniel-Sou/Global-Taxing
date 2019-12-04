@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery.getJSON demo</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+    <div id="images"></div>
+    <p>This is Macau to USD rate</p>
+    <p class="" id="mop-ex">THIS IS EXCHANGE RATE</p>
+
+    <script>
+        var mopex = document.getElementById("mop-ex");
+
+        (function () {
+            var FxAPI = "https://openexchangerates.org/api/latest.json?app_id=3a6c9c06492f48f9afdff18ae5015017";
+            $.getJSON(FxAPI, {
+                app_id: '3a6c9c06492f48f9afdff18ae5015017',
+                base: 'USD'
+            })
+                .done(function (data) {
+                    console.log("1 USD equals " + data.rates.MOP + " MOP" + "\n " + data.rates.JPY + " JPY");
+                    mopex.innerHTML = data.rates.MOP.toFixed(4);
+                });
+        })();
+    </script>
+
+</body>
+
+</html>

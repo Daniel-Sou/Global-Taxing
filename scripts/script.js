@@ -8,15 +8,30 @@ var usdTax = document.getElementById("usd-tax");
 var TaxUsd = document.getElementById("taxusd");
 var addi = document.getElementById("addi");
 var usButton = document.getElementById("us-button");
+var offButton = document.getElementById("non-us-button");
+var open = "btn btn-primary btn-lg active";
+var close = "btn btn-default btn-lg active";
+var check = new Boolean(false);
 
 incomeMOP.addEventListener("input", calculate);
 wealthMOP.addEventListener("input", calculate);
 mopEx.addEventListener("input",calculate);
 
 usButton.onclick = function() {
-    displayDate()
+    displayDate();
+    usButton.setAttribute("class", open);
+    offButton.setAttribute("class", close);
+    check = new Boolean(true);
 };
 
+offButton.onclick = function() {
+    displayDate();
+    usButton.setAttribute("class", close);
+    offButton.setAttribute("class", open);
+    check = new Boolean(false);
+};
+
+// Testing - Display date
 function displayDate() {
     document.getElementById("demo").innerHTML = Date();
 }

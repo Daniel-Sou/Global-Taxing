@@ -7,10 +7,19 @@ var mopEx = document.getElementById("mopex");
 var usdTax = document.getElementById("usd-tax");
 var TaxUsd = document.getElementById("taxusd");
 var addi = document.getElementById("addi");
+var usButton = document.getElementById("us-button");
 
 incomeMOP.addEventListener("input", calculate);
 wealthMOP.addEventListener("input", calculate);
 mopEx.addEventListener("input",calculate);
+
+usButton.onclick = function() {
+    displayDate()
+};
+
+function displayDate() {
+    document.getElementById("demo").innerHTML = Date();
+}
 
 function double(a) {
     return a * 2;

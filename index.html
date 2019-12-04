@@ -119,8 +119,10 @@
 </head>
 
 <body>
-
-    <header class="header">
+    <header class="header navbar">
+        <a class="navbar-brand">
+            <img src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+        </a>
         <h1>
             ISOM3029 Global Tax calculation
         </h1>
@@ -141,8 +143,12 @@
   </div>
 -->
         <div class="weather-card">
-            <button type="button" class="btn btn-default btn-lg active">US Citizen</button>
+            <button type="button" class="btn btn-default btn-lg active" id="us-button"> US Citizen</button>
             <button type="button" class="btn btn-primary btn-lg active">Non-US Citizen</button>
+        </div>
+
+        <div class="weather-card">
+            <p id="demo"></p>
         </div>
 
         <div class="weather-card">

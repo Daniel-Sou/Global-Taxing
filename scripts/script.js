@@ -1,20 +1,22 @@
 var incomeMOP = document.getElementById("income-mop");
-var incomeHKD = document.getElementById("income-hkd");
+// var incomeHKD = document.getElementById("income-hkd");
 var incomeUSD = document.getElementById("income-usd");
-var wealthMOP = document.getElementById("wealth");
+// var wealthMOP = document.getElementById("wealth");
 var taxSUM = document.getElementById("tax");
 var mopEx = document.getElementById("mopex");
-var usdTax = document.getElementById("usd-tax");
-var TaxUsd = document.getElementById("taxusd");
-var addi = document.getElementById("addi");
-var usButton = document.getElementById("us-button");
-var offButton = document.getElementById("non-us-button");
 var open = "btn btn-primary btn-lg active";
 var close = "btn btn-default btn-lg active";
 var check = new Boolean(false);
+var usButton = document.getElementById("us-button");
+var offButton = document.getElementById("non-us-button");
+
+// If us citizen
+var TaxUsd = document.getElementById("taxusd");
+var addi = document.getElementById("addi");
+var usdTax = document.getElementById("usd-tax");
 
 incomeMOP.addEventListener("input", calculate);
-wealthMOP.addEventListener("input", calculate);
+// wealthMOP.addEventListener("input", calculate);
 mopEx.addEventListener("input",calculate);
 
 usButton.onclick = function() {
@@ -22,6 +24,9 @@ usButton.onclick = function() {
     usButton.setAttribute("class", open);
     offButton.setAttribute("class", close);
     check = new Boolean(true);
+    document.getElementById("usd1").hidden = false;
+    document.getElementById("usd2").hidden = false;
+    document.getElementById("usd3").hidden = false;
 };
 
 offButton.onclick = function() {
@@ -29,6 +34,9 @@ offButton.onclick = function() {
     usButton.setAttribute("class", close);
     offButton.setAttribute("class", open);
     check = new Boolean(false);
+    document.getElementById("usd1").hidden = true;
+    document.getElementById("usd2").hidden = true;
+    document.getElementById("usd3").hidden = true;
 };
 
 // Testing - Display date
@@ -108,19 +116,25 @@ function calculate() {
     // Implement the Macau Tax
     var mopTax = incomeTaxMOP(incomeMOP.value);
     // Implement the HK Tax
-    var hkdTax = incomeTaxHKD(incomeHKD.value);
-    var wealthTax;
+    // var hkdTax = incomeTaxHKD(incomeHKD.value);
+    // var wealthTax;
 
     incomeUSD.value = exchangeUSD(incomeMOP,mopEx.value).toFixed(2);
 
     usdTax.value = incomeTaxUSD(incomeUSD.value).toFixed(2);
 
-    var wealthTax = 0.25 * wealthMOP.value;
-    var tax = mopTax + wealthTax + hkdTax;
+    // var wealthTax = 0.25 * wealthMOP.value;
+    var tax = mopTax; // + wealthTax + hkdTax;
 
     // round with 2 decimal places
-    taxSUM.value = Math.round(tax * 100) / 100;
-    TaxUsd.value = exchangeUSD(taxSUM,mopEx.value).toFixed(2);
-    addi.value = (usdTax.value - TaxUsd.value).toFixed(2);
+    if (!check) {
+        TaxUsd.value = "You do not need to pay global tax";
+        addi.value = "You do not need to pay global tax";
+    } else {
+        TaxUsd.value = exchangeUSD(taxSUM,mopEx.value).toFixed(2);
+        addi.value = (usdTax.value - TaxUsd.value).toFixed(2);    
+    }
 
+    taxSUM.value = Math.round(tax * 100) / 100;
+    
 }

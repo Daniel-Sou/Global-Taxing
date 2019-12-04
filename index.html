@@ -39,7 +39,7 @@
             justify-content: flex-start;
         }
 
-            /**
+        /**
         * Header
         */
 
@@ -150,7 +150,7 @@
         <div class="weather-card">
             <p id="demo"></p>
         </div>
-
+        <!--
         <div class="weather-card">
             <div class="col1">
                 <label for="wealth"> MOP Wealth >> </label>
@@ -168,6 +168,7 @@
                 <input type="number" name="income" min="0" id="income-hkd" required> <br>
             </div>
         </div>
+-->
 
         <!--
   <div class="weather-card">
@@ -197,12 +198,13 @@
             <div class="col-md-6 bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
                 <div class="my-3 py-3">
                     <h2 class="display-6" for="income-mop"> Annual MOP Income </h2>
-                    
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="income" min="0" id="income-mop" required>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            name="income" min="0" id="income-mop" required>
                         <div class="input-group-append">
                             <span class="input-group-text">.00</span>
                         </div>
@@ -218,11 +220,11 @@
             <div class="col-md-6 bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
                 <div class="my-3 p-3">
                     <h2 class="display-6">USD Income</h2> <br>
-                    <input type="number" class="form-control"  name="income-usd" min="1" id="income-usd" disabled> <br>
+                    <input type="number" class="form-control" name="income-usd" min="1" id="income-usd" disabled> <br>
                 </div>
-                <div class="my-3 p-3">
+                <div class="my-3 p-3" id="usd1">
                     <h2 class="display-6">TAX in USA</h2> <br>
-                    <input type="number" class="form-control"  name="tax" min="0" id="usd-tax" disabled> <br>
+                    <input type="number" class="form-control" name="tax" min="0" id="usd-tax" disabled> <br>
                 </div>
             </div>
         </div>
@@ -242,13 +244,13 @@
                 </div>
         </footer>
 
-            <!--
+        <!--
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             -->
-            <!--
+        <!--
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -268,22 +270,22 @@
             </div>
             -->
 
-    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-        <div class="row">
-            <div class="col">
-                <h6 class="text-white" href="#">Total Tax</h6>
-                <input type="number" name="tax" min="0" id="tax" disabled>
+        <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+            <div class="row">
+                <div class="col">
+                    <h6 class="text-white" href="#">Total Tax</h6>
+                    <input type="number" name="tax" min="0" id="tax" disabled>
+                </div>
+                <div class="col" id="usd2">
+                    <h6 class="text-white" href="#">USD Tax</h6>
+                    <input type="number" name="tax" min="0" id="taxusd" disabled>
+                </div>
+                <div class="col" id="usd3">
+                    <h6 class="text-white" href="#">Additional Tax</h6>
+                    <input type="number" name="tax" min="0" id="addi" disabled>
+                </div>
             </div>
-            <div class="col">
-                <h6 class="text-white" href="#">USD Tax</h6>
-                <input type="number" name="tax" min="0" id="taxusd" disabled>
-            </div>
-            <div class="col">
-                <h6 class="text-white" href="#">Additional Tax</h6>
-                <input type="number" name="tax" min="0" id="addi" disabled>
-            </div>
-        </div>
-    </nav>
+        </nav>
 
     </main>
 

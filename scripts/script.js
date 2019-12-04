@@ -27,6 +27,8 @@ usButton.onclick = function() {
     document.getElementById("usd1").hidden = false;
     document.getElementById("usd2").hidden = false;
     document.getElementById("usd3").hidden = false;
+    document.getElementById("usd4").hidden = false;
+
 };
 
 offButton.onclick = function() {
@@ -37,6 +39,8 @@ offButton.onclick = function() {
     document.getElementById("usd1").hidden = true;
     document.getElementById("usd2").hidden = true;
     document.getElementById("usd3").hidden = true;
+    document.getElementById("usd4").hidden = true;
+
 };
 
 // Testing - Display date

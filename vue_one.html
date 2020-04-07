@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div id="box">
+        <h2>This is box</h2>
+        <el-button @click="visible=true"> Welcome </el-button>
+        <el-dialog :visible.sync="visible" title="Hello World">
+            <p>Welcome to here!!!</p>
+        </el-dialog>
+    
+    </div>
+
+    <div id='app'>
+        <h1>Practise in Vue.JS</h1>
+        <h2>Daniel's have things</h2>
+        <el-table 
+            :data = "todos" 
+            max-height = "500"
+            style = "width:98%"
+            :row-class-name="tableRowClassName">
+            
+            <el-table-column
+                prop = "userId"
+                label = "User"
+                width = "50">
+            </el-table-column>
+            <el-table-column 
+                prop="id" 
+                label="Case ID" 
+                width="100">
+            </el-table-column>
+            <el-table-column 
+                prop="title" 
+                label="Title">
+            </el-table-column>
+        </el-table>
+
+        <ul>
+            <li v-for="todo in todos">
+                <span v-if="todo.completed === false">
+                    - FALSE -
+                </span>
+                {{ todo.userId }} == {{ todo.id }} == {{todo.title}}
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+
+<!-- import Vue before Element -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+<script>
+    var url = 'http://jsonplaceholder.typicode.com/todos'
+
+    const app = new Vue({
+        el: '#app',
+        methods: {
+            tableRowClassName({row,rowIndex}) {
+                if ( rowIndex % 2 === 1) {
+                    return 'warning-row';
+                }
+                return "";
+            }
+        },
+        data: {
+            todos: []
+        },
+        created() {
+            fetch(url)
+                .then(response => response.json())
+                .then(json => {
+                    this.todos = json
+                })
+        }
+    });
+
+    const box = new Vue({
+            el: '#box',
+            data: function () {
+                return { visible: false }
+            }
+        })
+</script>
+
+<script>
+
+</script>
+
+</html>
+

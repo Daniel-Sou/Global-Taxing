@@ -52,6 +52,10 @@ function double(a) {
     return a * 2;
 }
 
+function tribble(a) {
+    return a * 3;
+}
+
 // Function to calculate MOP tax
 function incomeTaxMOP(a) {
     if (a <= 0) {

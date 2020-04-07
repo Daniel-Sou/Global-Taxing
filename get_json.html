@@ -1,0 +1,34 @@
+<head></head>
+
+<body>
+    <h2>The things we have to buy:</h2>
+    <div id="root"></div>
+
+    <script>
+        var url_post = 'http://jsonplaceholder.typicode.com/posts'
+
+        // userId, id, title body
+        async function getData() {
+            const response = await fetch(url_post);
+            const posts = await response.json();
+            const root = document.querySelector("#root");
+            const ul = document.createElement("ul");
+            posts.forEach(post => {
+                const li = document.createElement("li");
+                const anchor = document.createElement("a");
+                anchor.appendChild(document.createTextNode(post.title))
+
+                anchor.setAttribute('href', `http://jsonplaceholder.typicode.com/posts/${post.id}`);
+
+                li.appendChild(anchor);
+
+                ul.appendChild(li);
+
+            });
+
+            root.appendChild(ul);
+        }
+
+        getData();
+    </script>
+</body>
